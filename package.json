@@ -1,0 +1,24 @@
+{
+  "name": "hello-world-python",
+  "version": "1.0.0",
+  "description": "A simple hello world Python package with Node.js build compatibility",
+  "main": "hello_world.py",
+  "scripts": {
+    "test": "python -m pytest test_hello_world.py --cov=. --cov-report=term-missing --cov-report=json -v",
+    "build": "python -m py_compile hello_world.py && python -c 'import hello_world; print(\"Build successful: \" + hello_world.hello_world())'",
+    "lint": "python -m py_compile hello_world.py test_hello_world.py",
+    "coverage": "python -m pytest test_hello_world.py --cov=. --cov-report=json --cov-report=term-missing",
+    "install": "pip install -r requirements.txt",
+    "start": "python -c 'import hello_world; print(hello_world.hello_world())'"
+  },
+  "keywords": ["python", "hello-world", "testing"],
+  "author": "Developer",
+  "license": "MIT",
+  "engines": {
+    "python": ">=3.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  }
+}

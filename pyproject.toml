@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hello-world"
+version = "1.0.0"
+description = "A simple hello world Python package"
+authors = [
+    {name = "Developer"}
+]
+requires-python = ">=3.8"
+dependencies = []
+
+[project.optional-dependencies]
+test = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "--cov=. --cov-report=term-missing --cov-report=html"
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "test_*.py",
+    "*_test.py",
+    ".pytest_cache/*",
+    "htmlcov/*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError"
+]
